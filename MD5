@@ -1,0 +1,14 @@
+c31acc6034f5f124f771ad7258ff0da6 *DESCRIPTION
+9204f36cea9cca89ae1ca46e9d44da82 *NAMESPACE
+58bd78fe43bdef705ddd6b1f2caf105e *R/atualizaCampoBase.R
+c03615bc328e7deb411ff1d59c23a217 *R/converteCampoParaCharacter.R
+45976acff6885ff239ddf9f5c84415cc *R/criaDadosPareados.R
+9857b5f2fd3bf0d9629c166bb618d6a1 *R/getAnoMedicao.R
+437cb24f0c716e0bc76a193059c58b72 *R/retornaValor.R
+af41c601de4f640e9796b4d7acb6dfb4 *R/verificaTipoColuna.R
+9a7f672621096cc01f1cbbfa7617e7e2 *man/atualizaCampoBase.Rd
+68dd4a89b1b3dabf7feaa69998e862ee *man/converteCampoParaCharacter.Rd
+4658781a51293c198d3c67e95cf8e260 *man/criaDadosPareados.Rd
+0f02746cda9b7118e5dabbb3a338f08d *man/getAnoMedicao.Rd
+cad0be69d5338691b381598204f4f31d *man/retornaValor.Rd
+c9f98f3d7bcbe1437f0d61c3fa7e66d9 *man/verificaTipoColuna.Rd
