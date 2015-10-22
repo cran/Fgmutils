@@ -1,0 +1,9 @@
+Fgmutils 0.2
+    o   Dependency on package 'siar' removed.
+    o   Various small fixes of the documentation.
+    o   change in function getanoMedicao, making it more generic
+    o add function listToDataFrame, check.integer
+
+Fgmutils 0.1
+
+    o   add functions atualizaCampoBase, converteCampoParaCharacter, criaDadosPareados, getAnoMedicao, retornaValo, verificaTipoColuna.

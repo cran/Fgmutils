@@ -18,9 +18,9 @@ base dataFrame with a column converted to String
 converts a column of a dataframe to String
 }
 \examples{
-DATA_MEDICAO <- c(02/2009,02/2010,02/2011,02/2011)
-CD_PARCELA <- c(6947,6947,6947,6947)
-test <- data.frame(DATA_MEDICAO,CD_PARCELA)
-converteCampoParaCharacter("DATA_MEDICAO",test)
+measurement_date <- c(02/2009,02/2010,02/2011,02/2011)
+plot <- c(1,2,3,4)
+test <- data.frame(measurement_date,plot)
+converteCampoParaCharacter("measurement_date",test)
 }
 

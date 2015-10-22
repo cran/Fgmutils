@@ -4,21 +4,25 @@
 \alias{getAnoMedicao}
 \title{Get Year Measurement}
 \usage{
-getAnoMedicao(dataFrame)
+getAnoMedicao(dataFrame, column_name_measurement_date, column_name_plot)
 }
 \arguments{
-\item{dataFrame}{that has the column DATA_MEDICAO,CD_PARCELA}
+\item{dataFrame}{that has the column DATE(MM/YYYY) and a ID column_name_plot}
+
+\item{column_name_measurement_date}{column with a date format}
+
+\item{column_name_plot}{a column of dataFrame, identification of plot (ID_plot)}
 }
 \value{
-dataFrame dataframe that has columns COD_PARCELA, DATA_MEDICAO, ANO_MEDICAO
+dataFrame dataframe that has columns column_name_measurement_date, column_name_plot, ANO_MEDICAO
 }
 \description{
-using DATA_MEDICAO column in the form MM/YYYY creates a new column with the name "ANO_MEDICAO" in YYYY format
+using column_name_measurement_date column in the form MM/YYYY creates a new column with the name "ANO_MEDICAO" in YYYY format
 }
 \examples{
-DATA_MEDICAO <- c("02/2009","02/2010","02/11","02/2011")
-CD_PARCELA <- c(6947,6947,6947,6947)
-test <- data.frame(DATA_MEDICAO,CD_PARCELA)
-getAnoMedicao(test)
+column_name_measurement_date <- c("02/2009","02/2010","02/2011","02/2012")
+column_name_plot <- c(1,2,3,4)
+test <- data.frame(column_name_measurement_date,column_name_plot)
+getAnoMedicao(test,"column_name_measurement_date","column_name_plot")
 }
 
