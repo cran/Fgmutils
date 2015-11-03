@@ -1,3 +1,6 @@
+Fgmutils 0.3
+    o add function ifrm, whichmedian,classificaClasseDAP, defineClasses2.
+
 Fgmutils 0.2
     o   Dependency on package 'siar' removed.
     o   Various small fixes of the documentation.

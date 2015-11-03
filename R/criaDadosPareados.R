@@ -14,6 +14,26 @@
 criaDadosPareados <- function (dataFrame, campoChave, campoComparacao, camposPareados, camposNaoPareados)
 {
   ini = Sys.time()
+
+  if (!campoChave %in% names(dataFrame)) {
+    stop("O campo ",campoChave," nao existe no dataframe informado")
+  }
+
+  if (!campoComparacao %in%  names(dataFrame)) {
+    stop("O campo ",campoComparacao," nao existe no dataframe informado")
+  }
+
+  naoExistemPareados = camposPareados[which((camposPareados %in% names(dataFrame)) %in% FALSE)]
+  if (length(naoExistemPareados>0)) {
+    stop("Os seguintes campos nao existem no dataframe informado: ", naoExistemPareados)
+  }
+
+  naoExistemNaoPareados = camposNaoPareados[which((camposNaoPareados %in% names(dataFrame)) %in% FALSE)]
+  if (length(naoExistemNaoPareados>0)) {
+    stop("Os seguintes campos nao existem no dataframe informado:\n", naoExistemNaoPareados)
+  }
+
+  ini = Sys.time()
   cat("\f")
   cat(paste("\nMontando dados..."))
 

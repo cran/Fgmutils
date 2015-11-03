@@ -1,8 +1,8 @@
 Package: Fgmutils
 Type: Package
 Title: Forest Growth Model Utilities
-Version: 0.2
-Date: 2015-10-22
+Version: 0.3
+Date: 2015-11-02
 Author: Clayton Vieira Fraga,
         Ana Paula Simiqueli,
         Wagner Amorim da Silva Altoe
@@ -10,10 +10,10 @@ Maintainer: Clayton Vieira Fraga <altoe.wagner@gmail.com>
 Description: Growth models and forest production require existing data manipulation and the creation of new data, structured from basic forest inventory data. The purpose of this package is provide functions to support these activities.
 License: GPL-2
 Depends: sqldf, stringr, plyr, R (>= 3.0)
-Imports: data.table, tcltk, utils
+Imports: data.table, tcltk, utils, stats
 LazyData: TRUE
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2015-10-22 06:22:30 UTC; DC
+Packaged: 2015-11-03 01:43:55 UTC; DC
 Repository: CRAN
-Date/Publication: 2015-10-22 08:41:23
+Date/Publication: 2015-11-03 10:58:44
