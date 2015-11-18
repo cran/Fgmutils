@@ -14,6 +14,13 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
   #Picking up the columns of the database to be updated.
   baseAtualizar = data.table(baseAtualizar)  # Base to be updated.
   baseAgrupada = data.table(baseAgrupada) # Base with grouped data
+  
+  for (i in 1:length(camposAtualizar)) {
+   comando = paste0("baseAtualizar$",camposAtualizar[i],"=-999")
+   eval(parse(text=comando))
+   remove(comando)
+  }	  
+
   tipo = NULL
   tipo1 = NULL
   tipo2 = NULL
@@ -131,6 +138,7 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
   fim = Sys.time()
   tempo = fim-ini
   remove(fim, ini)
+  cat("\n")
   print(tempo)
 
 
