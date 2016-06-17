@@ -18,6 +18,7 @@
 #' @importFrom "png" "readPNG"
 #' @export
 avaliaAjuste <- function(dataFrame, variavelObservados, variavelEstimados, linear=TRUE, nParametros=NA, intercepto = TRUE, plot=NA, modelo=NA, resumo=FALSE, emf=TRUE) {
+  requireNamespace("devEMF")
   if (is.na(nParametros) || nParametros < 0) {
     stop("Enter the number of parameters used in the adjusted model.")
   }

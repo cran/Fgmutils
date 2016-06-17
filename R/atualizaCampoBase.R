@@ -4,22 +4,23 @@
 ##' @param baseAgrupada It is the database that contains the data you want to update on dataframe
 ##' @param baseAtualizar It is dataframe that you want to change fields
 ##' @param keys are the keys of the table that will be used in the compare
+##' @param verbose default false
 ##' @return baseAtualizar with the updated fields according to baseAgrupada
 ##' @import data.table
 ##' @export
-atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, keys){
+atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, keys, verbose=FALSE){
 
   ini = Sys.time()
 
   #Picking up the columns of the database to be updated.
   baseAtualizar = data.table(baseAtualizar)  # Base to be updated.
   baseAgrupada = data.table(baseAgrupada) # Base with grouped data
-  
+
   for (i in 1:length(camposAtualizar)) {
    comando = paste0("baseAtualizar$",camposAtualizar[i],"=-999")
    eval(parse(text=comando))
    remove(comando)
-  }	  
+  }
 
   tipo = NULL
   tipo1 = NULL
@@ -30,7 +31,7 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
     if(!(camposAtualizar[i] %in% names(baseAtualizar))){
 
 
-      (novaColuna <- as.numeric(rep(-1, nrow(baseAtualizar))))
+      (novaColuna <- as.numeric(rep(-999, nrow(baseAtualizar))))
 
       baseAtualizar <- cbind(baseAtualizar, novaColuna)
       id_col = which(names(baseAtualizar) == "novaColuna") # Take the column identifier in the database.
@@ -42,10 +43,10 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
 
 
     if(tipo == "character"){
-      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.character('-1')")))
+      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.character('-999')")))
     }
     else
-      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.numeric(-1)")))
+      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.numeric(-999)")))
   }
 
   #Putting the keys in the same type
@@ -79,9 +80,8 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
 
 
 
-
-
-    cat("\n")
+    varNovoCampo = NULL
+	if (verbose) cat("\n")
     for (i in 1:nrow(baseAgrupada)) {
       chaves=""
       for(j in 1:(length(keys)-1)){
@@ -92,8 +92,7 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
       eval(parse(text=paste0(keys[j+1],"=retornaValor(baseAgrupada$", keys[j+1], "[i])")))
       eval(parse(text=paste0("chaves=paste0(chaves, ", keys[j+1],")" )))
       eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-      cat(".")
-      varNovoCampo = NULL
+      if (verbose) cat(".")
       for(j in 1:(length(camposAtualizar))){
         eval(parse(text=paste0("varNovoCampo = retornaValor(baseAgrupada$", camposAtualizar[j], "[i])")))
 
@@ -119,7 +118,7 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
       eval(parse(text=paste0(keys[1],"=retornaValor(baseAgrupada$", keys[1], "[i])")))
       eval(parse(text=paste0("chaves=paste0(chaves, ", keys[1],")" )))
       eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-      cat(".")
+      if (verbose)cat(".")
 
       for(j in 1:(length(camposAtualizar))){
 
@@ -138,8 +137,8 @@ atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, key
   fim = Sys.time()
   tempo = fim-ini
   remove(fim, ini)
-  cat("\n")
-  print(tempo)
+  if (verbose)cat("\n")
+  if (verbose) print(tempo)
 
 
   return (baseAtualizar)

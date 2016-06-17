@@ -1,5 +1,7 @@
+Fgmutils 0.5
+     o   add listToDataFrame function
 Fgmutils 0.4
-    o   add function isfinitedataframe,mspr, avalisAjuste, syx, fator_bias, bias, R21a, R29a, residuoPerc, calculaPerc, calculaA, atualizaCampoBase, mae, rmse, syxPec, mspr, ce, rrmse
+    o   add function isfinitedataframe, mspr, avalisAjuste, syx, fator_bias, bias, R21a, R29a, residuoPerc, calculaPerc, calculaA, atualizaCampoBase, mae, rmse, syxPec, mspr, ce, rrmse
 Fgmutils 0.3
     o   add function ifrm, whichmedian,classificaClasseDAP, defineClasses2.
 Fgmutils 0.3
