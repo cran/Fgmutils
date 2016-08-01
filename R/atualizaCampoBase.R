@@ -9,138 +9,43 @@
 ##' @import data.table
 ##' @export
 atualizaCampoBase <- function (camposAtualizar, baseAgrupada, baseAtualizar, keys, verbose=FALSE){
-
   ini = Sys.time()
-
-  #Picking up the columns of the database to be updated.
+  if(verbose) print("Picking up the columns of the database to be updated.")
   baseAtualizar = data.table(baseAtualizar)  # Base to be updated.
   baseAgrupada = data.table(baseAgrupada) # Base with grouped data
 
-  for (i in 1:length(camposAtualizar)) {
-   comando = paste0("baseAtualizar$",camposAtualizar[i],"=-999")
-   eval(parse(text=comando))
-   remove(comando)
+  if(verbose) print("check that the column already exists in the base, failing that, will create")
+  if(verbose) print("Putting the fields of update of both tables in the same type")
+  dtType = data.table(
+    campos = camposAtualizar,
+    tipo = (sapply(baseAgrupada[, camposAtualizar, with = FALSE], class)))
+  tipos = dtType$tipo[ dtType$tipo %in% c("factor", "character", "integer", "logical", "numeric")]
+  for(i in 1:length(tipos))
+    eval(parse(text = paste0("baseAtualizar[, dtType[tipo == tipos[[i]]]$campos := as.",  tipos[[i]], "(-999)]")))
+
+  if(verbose) print("Putting the keys in the same type")
+  diferentes = unique(data.table(
+    campos = keys,
+    diferentes = (sapply(baseAgrupada[, keys, with = FALSE], class)
+                  != sapply(baseAtualizar[, keys, with = FALSE], class))
+  )[diferentes %in% c(TRUE, T)]$campos)
+  if(length(diferentes) > 0){
+    baseAgrupada[,diferentes] <- sapply(baseAgrupada[,diferentes, with = FALSE], as.character)
+    baseAtualizar[,diferentes] <- sapply(baseAtualizar[,diferentes, with = FALSE], as.character)
   }
 
-  tipo = NULL
-  tipo1 = NULL
-  tipo2 = NULL
-  #check that the column already exists in the base, failing that, will create
-  for(i in 1:(length(camposAtualizar))){
+  setkeyv(baseAtualizar, keys)
 
-    if(!(camposAtualizar[i] %in% names(baseAtualizar))){
-
-
-      (novaColuna <- as.numeric(rep(-999, nrow(baseAtualizar))))
-
-      baseAtualizar <- cbind(baseAtualizar, novaColuna)
-      id_col = which(names(baseAtualizar) == "novaColuna") # Take the column identifier in the database.
-      setnames(baseAtualizar, "novaColuna", camposAtualizar[i])
-    }
-    eval(parse(text=paste0("tipo = typeof(baseAgrupada$",camposAtualizar[i],")")))
-    #to hit the type
-
-
-
-    if(tipo == "character"){
-      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.character('-999')")))
-    }
-    else
-      eval(parse(text=paste0("baseAtualizar$",camposAtualizar[i]," = as.numeric(-999)")))
+  for (i in 1:nrow(baseAgrupada)) {
+    if (verbose) cat(".")
+    for (j in 1:length(camposAtualizar))
+      eval(parse(text = paste0(
+        "baseAtualizar[baseAgrupada[i,keys, with = FALSE], ", camposAtualizar[[j]],
+        ":= (baseAgrupada[i, ", camposAtualizar[[j]], "])]")))
   }
 
-  #Putting the keys in the same type
-  for(i in 1:(length(keys))){
-    eval(parse(text=paste0("tipo1 = typeof(baseAgrupada$",keys[i],")")))
-    eval(parse(text=paste0("tipo2 = typeof(baseAtualizar$",keys[i],")")))
-    if (tipo1 != tipo2){
-      eval(parse(text=paste0("baseAtualizar$",keys[i]," = as.character(baseAtualizar$",keys[i],")")))
-      eval(parse(text=paste0("baseAgrupada$",keys[i]," = as.character(baseAgrupada$",keys[i],")")))
-
-    }
-
-  }
-
-
-  #Generating the keys to setkey
-  chavesSet = ""
-
-
-  if((length(keys))>1){
-
-
-
-    for(i in 1:(length(keys)-1)){
-      chavesSet = paste0(chavesSet, keys[i], ", ")
-    }
-    chavesSet = paste0(chavesSet, keys[i+1])
-
-    eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-    eval(parse(text=paste0("setkey(baseAgrupada, ", chavesSet,")")))
-
-
-
-    varNovoCampo = NULL
-	if (verbose) cat("\n")
-    for (i in 1:nrow(baseAgrupada)) {
-      chaves=""
-      for(j in 1:(length(keys)-1)){
-
-        eval(parse(text=paste0(keys[j],"=retornaValor(baseAgrupada$", keys[j], "[i])")))
-        eval(parse(text=paste0("chaves=paste0(chaves, ", keys[j],", ', ')" )))
-      }
-      eval(parse(text=paste0(keys[j+1],"=retornaValor(baseAgrupada$", keys[j+1], "[i])")))
-      eval(parse(text=paste0("chaves=paste0(chaves, ", keys[j+1],")" )))
-      eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-      if (verbose) cat(".")
-      for(j in 1:(length(camposAtualizar))){
-        eval(parse(text=paste0("varNovoCampo = retornaValor(baseAgrupada$", camposAtualizar[j], "[i])")))
-
-
-        eval(parse(text=paste0("baseAtualizar[list(", chaves,"), ",camposAtualizar[j], " := ", varNovoCampo,"]")))
-      }
-
-
-
-    }
-  }
-  else {
-
-    chavesSet = paste0(chavesSet, keys[1])
-
-    eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-    eval(parse(text=paste0("setkey(baseAgrupada, ", chavesSet,")")))
-
-
-    for (i in 1:nrow(baseAgrupada)) {
-      chaves=""
-      aux = ""
-      eval(parse(text=paste0(keys[1],"=retornaValor(baseAgrupada$", keys[1], "[i])")))
-      eval(parse(text=paste0("chaves=paste0(chaves, ", keys[1],")" )))
-      eval(parse(text=paste0("setkey(baseAtualizar, ", chavesSet,")")))
-      if (verbose)cat(".")
-
-      for(j in 1:(length(camposAtualizar))){
-
-        eval(parse(text=paste0("varNovoCampo = retornaValor(baseAgrupada$", camposAtualizar[j], "[i])")))
-        eval(parse(text=paste0("baseAtualizar[list(", chaves,"), ",camposAtualizar[j], " := ", varNovoCampo,"]")))
-      }
-
-
-
-    }
-
-
-
-
-  }
-  fim = Sys.time()
-  tempo = fim-ini
-  remove(fim, ini)
-  if (verbose)cat("\n")
-  if (verbose) print(tempo)
-
-
-  return (baseAtualizar)
-
+  if (verbose) cat("\n")
+  if (verbose) print(paste0("elapsed ", round(as.numeric(Sys.time() - ini), 2), " sgs"))
+  remove(ini, dtType,tipos, diferentes)
+  return (baseAtualizar[])
 }

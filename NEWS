@@ -1,3 +1,5 @@
+Fgmutils 0.7
+     o   atualizaCampoBase function updated to work with all types in fields
 Fgmutils 0.6
      o   add separaDados function
 Fgmutils 0.5
