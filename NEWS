@@ -1,3 +1,9 @@
+Fgmutils 0.8
+     o  defineClasses function add option verbose to show status and add getDataFrame option to return a data.frame type
+     o  getClasses function add
+     o  classificaClasseDAP function changed to accept dap in limits of dfClassesDAP and get NhaClasse and NCLASSES fields
+     o   function classificarDAP add to classify dap from inventarios
+     o  using datatable to reduce the process time
 Fgmutils 0.7
      o   atualizaCampoBase function updated to work with all types in fields
 Fgmutils 0.6

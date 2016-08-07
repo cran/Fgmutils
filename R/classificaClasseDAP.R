@@ -2,21 +2,36 @@
 #' @description the center of the class that the DAP belongs.
 #' @param dfClassesDAP a frequency distribution with the attributes $classe and $centro
 #' @param dap integer Diameter at breast height
+#' @param  getNhaClasse get NhaClasse field of dfClassesDAP, default false
+#' @param  getNCLASSES get NCLASSES field of dfClassesDAP, default false
 #' @examples
-#' dados <- c(1,2,3,4)
-#' dados = defineClasses2(dados,2)
-#' classificaClasseDAP(dados,2)
+#' dados = defineClasses(1, 10, 2, getDataFrame = TRUE)
+#' classificaClasseDAP(dados,7)
 #' @export
-classificaClasseDAP <- function(dfClassesDAP, dap) {
-  for (i in 1:length(dfClassesDAP$centro)) {
-    classe = dfClassesDAP$classe[i,]
-    centro = dfClassesDAP$centro[i]
-    linf=classe[1]
-    lsup=classe[2]
-
-    if (dap>=linf && dap<lsup) {
-      return(centro)
+classificaClasseDAP <- function(dfClassesDAP, dap, getNhaClasse = FALSE, getNCLASSES = FALSE) {
+  linhas = nrow(dfClassesDAP)
+  if(linhas == 1 && ((dap >= dfClassesDAP[1,]$linf) && (dap <= dfClassesDAP[1,]$lsup))){
+    if (getNCLASSES == TRUE){
+      return (dfClassesDAP[1, ]$NCLASSES)
+    }
+    if (getNhaClasse == TRUE){
+      return (dfClassesDAP[1, ]$NhaClasse)
+    }
+    return(dfClassesDAP[1,]$centro)
+  }
+  if (linhas > 1){
+    for (i in 1:linhas) {
+      if (dap >= dfClassesDAP[i,]$linf && (dap < dfClassesDAP[i,]$lsup || (i == linhas && dap <= dfClassesDAP[i,]$lsup))) {
+        if (getNCLASSES == TRUE){
+          return (dfClassesDAP[i, ]$NCLASSES)
+        }
+        if (getNhaClasse == TRUE){
+          return (dfClassesDAP[i, ]$NhaClasse)
+        }
+        return(dfClassesDAP[i,]$centro)
+      }
     }
   }
-  return(NA)
+  print(paste0('impossivel classificar dap ', dap, ' para ', dfClassesDAP[1,]$linf, ' A ', dfClassesDAP[linhas,]$lsup))
+  return(-1)
 }

@@ -4,7 +4,8 @@
 \alias{defineClasses}
 \title{define Classes}
 \usage{
-defineClasses(limiteMin, limiteMax, amplitude, decrescente = TRUE)
+defineClasses(limiteMin, limiteMax, amplitude, decrescente = TRUE,
+  getDataFrame = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{limiteMin}{the lowest list number}
@@ -14,6 +15,10 @@ defineClasses(limiteMin, limiteMax, amplitude, decrescente = TRUE)
 \item{amplitude}{List amplitude}
 
 \item{decrescente}{order by true decreasing , false increasing}
+
+\item{getDataFrame}{return a data.frame default false because old uses}
+
+\item{verbose}{show status default false}
 }
 \description{
 creates a list with the class interval of a frequency distribution

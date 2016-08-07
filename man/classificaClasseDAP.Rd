@@ -4,19 +4,23 @@
 \alias{classificaClasseDAP}
 \title{classifica Classe DAP}
 \usage{
-classificaClasseDAP(dfClassesDAP, dap)
+classificaClasseDAP(dfClassesDAP, dap, getNhaClasse = FALSE,
+  getNCLASSES = FALSE)
 }
 \arguments{
 \item{dfClassesDAP}{a frequency distribution with the attributes $classe and $centro}
 
 \item{dap}{integer Diameter at breast height}
+
+\item{getNhaClasse}{get NhaClasse field of dfClassesDAP, default false}
+
+\item{getNCLASSES}{get NCLASSES field of dfClassesDAP, default false}
 }
 \description{
 the center of the class that the DAP belongs.
 }
 \examples{
-dados <- c(1,2,3,4)
-dados = defineClasses2(dados,2)
-classificaClasseDAP(dados,2)
+dados = defineClasses(1, 10, 2, getDataFrame = TRUE)
+classificaClasseDAP(dados,7)
 }
 
