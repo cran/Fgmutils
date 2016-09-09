@@ -1,3 +1,26 @@
+Fgmutils 0.9
+     o  a new concept of mathematical evaluation model was introduced to this, two new functions have been implemented:
+     avaliaEstimativas e avaliaVolumeAvancado
+     o  to support the functioning of these 8 were written more functions:
+calculaVolumeDefault  getColumnsOfBase
+contemParametros      getFormulaExclusivaOfAjust
+getBaseOfAjust        getParametrosOfModel
+getColumnsOfAjust     predizer
+     o  so that the coherent concept with high OO software development standards could be implemented these four functions have been added:
+criaModeloExclusivo  criaModeloGenerico  geraModelo  salvaModelo
+     o  15 statistical functions have been added to calculate the valuation models of Statistics (they are adapter functions of this package):
+estatisticasBiasPERCENTUAL  estatisticas
+estatisticasBIAS            estatisticasR2
+estatisticasCE              estatisticasResiduoPERCENTUAL
+estatisticasCorrPERCENTUAL  estatisticasResiduos
+estatisticasCORR            estatisticasRmsePERCENTUAL
+estatisticasCvPERCENTUAL    estatisticasRMSE
+estatisticasCV              estatisticasRRMSE
+estatisticasMAE
+     o  to present the results of these 5 were added:
+getggplot2GraphicObservadoXEstimado  getGraphicResiduoAbs
+getGraphicHistogram                  getGraphicResiduoPerc
+getGraphicObservadoXEstimado
 Fgmutils 0.8
      o  defineClasses function add option verbose to show status and add getDataFrame option to return a data.frame type
      o  getClasses function add
