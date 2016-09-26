@@ -6,7 +6,8 @@
 \usage{
 getGraphicObservadoXEstimado(titulo = "observadoXestimado",
   nome = "observadoXestimado", observado, estimado, showTestF = TRUE,
-  save = NULL, labsX = "observado", labsy = "estimado", ...)
+  save = NULL, labsX = "observado", labsy = "estimado", vetorial = T,
+  ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -24,6 +25,8 @@ getGraphicObservadoXEstimado(titulo = "observadoXestimado",
 \item{labsX}{label x}
 
 \item{labsy}{label y}
+
+\item{vetorial}{save picture in vector type? (Default TRUE)}
 
 \item{...}{only for compatibility with other functions}
 }

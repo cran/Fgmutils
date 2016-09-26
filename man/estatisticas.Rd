@@ -16,7 +16,7 @@ estatisticas(observado, estimado, dfEstatisticas = NULL, ...)
 \item{...}{only for compatibility with other functions}
 }
 \value{
-will be returned data.frame with observado and estimado fields add
+will be returned a list with data.frame with observado and estimado fields and other with statictcs of model add
 }
 \description{
 this function returns a data.frame containing fields observado and estimado

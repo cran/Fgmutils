@@ -5,7 +5,7 @@
 \title{Get Histogram of Residuals absolute}
 \usage{
 getGraphicHistogram(titulo = "residuos", nome = "observadoXestimado",
-  estatisticas, save = NULL, ...)
+  estatisticas, save = NULL, vetorial = T, ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -15,6 +15,8 @@ getGraphicHistogram(titulo = "residuos", nome = "observadoXestimado",
 \item{estatisticas}{data.frame containing field 'residuo'}
 
 \item{save}{If you want to save enter the directory as a string}
+
+\item{vetorial}{save picture in vector type? (Default TRUE)}
 
 \item{...}{only for compatibility with other functions}
 }

@@ -4,9 +4,10 @@
 \alias{getGraphicResiduoPerc}
 \title{Get Graphic Residuals percent}
 \usage{
-getGraphicResiduoPerc(titulo = "residuo percentual",
+getGraphicResiduoPerc(titulo = "Residuo Percentual (\%)",
   nome = "observadoXestimado", strVariavelXResiduo = NULL, estatisticas,
-  save = NULL, labsX = "observacao", labsy = "residuos", ...)
+  save = NULL, labsX = "observacao", labsy = "residuos", vetorial = T,
+  ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -22,6 +23,8 @@ getGraphicResiduoPerc(titulo = "residuo percentual",
 \item{labsX}{label x}
 
 \item{labsy}{label y}
+
+\item{vetorial}{save picture in vector type? (Default TRUE)}
 
 \item{...}{only for compatibility with other functions}
 }

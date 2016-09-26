@@ -1,3 +1,19 @@
+## Copyright (C) 2016  Clayton Vieira Fraga Filho
+##
+## This program is free software; you can redistribute it and/or
+## modify it under the terms of the GNU General Public License
+## as published by the Free Software Foundation; either version 2
+## of the License, or (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 ##' @title evaluates Volume Advanced
 ##' @description this function performs an assessment of estimates of a variable as the forcefulness with expected
 ##' @param base data.frame with data
@@ -64,9 +80,9 @@ avaliaVolumeAvancado <- function(base, mapeamento= list(dap1="dap1", dap2="dap2"
 
     grafic1 = grafic2 = grafic3 = graficos
     if (!is.null(graficos)){
-      grafic1$save = dirDAP
-      grafic2$save = dirHT
-      grafic3$save = save
+      grafic1$save = paste0(dirDAP, nomes[i], "/" )
+      grafic2$save = paste0(dirHT, nomes[i], "/" )
+      grafic3$save = paste0(save, nomes[i], "/" )
       grafic1$titulo = grafic1$nome = paste0( nomes[i], " DAP Ajuste" )
       grafic2$titulo = grafic2$nome =  paste0( nomes[i], " HT Ajuste" )
       grafic3$titulo = grafic3$nome =  paste0( nomes[i], " Volume Validacao" )
@@ -79,14 +95,15 @@ avaliaVolumeAvancado <- function(base, mapeamento= list(dap1="dap1", dap2="dap2"
     estatistica = avaliaEstimativas(
       observado = fnCalculaVolume( dap = baseValidacao$dap2, ht = baseValidacao$ht2 ),
       estimado = fnCalculaVolume(
-        dap = predizer( ajuste = avaliaEstimativas( observado =  baseTreino$dap2, ajuste = modelo(y1=mapeamento$dap1, y2=mapeamento$dap2, base = baseTreino), graficos = grafic1, estatisticas = estatisticas, salvarEm = dirDAP, nome = paste0("ajuste DAP ", nomes[i]))$ajuste, newdata = baseValidacao, force = forcePredict),
-        ht = predizer( ajuste = avaliaEstimativas( observado =  baseTreino$ht2, ajuste = modelo(y1=mapeamento$ht1, y2=mapeamento$ht2, base = baseTreino), graficos = grafic2, estatisticas = estatisticas, salvarEm = dirHT, nome = paste0("ajuste HT ", nomes[i]))$ajuste, newdata = baseValidacao, force = forcePredict) ),
+        dap = predizer( ajuste = avaliaEstimativas( observado =  baseTreino$dap2, ajuste = modelo(y1=mapeamento$dap1, y2=mapeamento$dap2, base = baseTreino), graficos = grafic1, estatisticas = estatisticas, salvarEm = paste0(dirDAP, nomes[i], "/" ), nome = paste0("ajuste DAP ", nomes[i]))$ajuste, newdata = baseValidacao, force = forcePredict),
+        ht = predizer( ajuste = avaliaEstimativas( observado =  baseTreino$ht2, ajuste = modelo(y1=mapeamento$ht1, y2=mapeamento$ht2, base = baseTreino), graficos = grafic2, estatisticas = estatisticas, salvarEm = paste0(dirHT, nomes[i], "/" ), nome = paste0("ajuste HT ", nomes[i]))$ajuste, newdata = baseValidacao, force = forcePredict) ),
       graficos = grafic3,
       estatisticas = estatisticasV,
-      salvarEm = save,
+      salvarEm = paste0(save, nomes[i], "/" ),
       nome = paste0("validacao Volume ", nomes[i])
     )
 
+    estatistica$estatisticas$estatisticas = cbind(baseValidacao, estatistica$estatisticas$estatisticas)
     eval(parse(text=paste0("dfestatisticas$", nomes[i], " = estatistica")))
     eval(parse(text=paste0("volumesPreditos$", nomes[i], " = estatistica$estimado")))
     ranking = rbind(ranking, estatistica$ranking)
@@ -94,8 +111,8 @@ avaliaVolumeAvancado <- function(base, mapeamento= list(dap1="dap1", dap2="dap2"
 
   rownames(ranking) = nomes
   ranking = ranking[ order( ranking$rankingB0, ranking$rankingB1),]
-  ranking$pos = list(1:nrow(ranking))[[1]]
-  rank = ranking[,c("pos", "b0", "b1")]
+  ranking$rank = list(1:nrow(ranking))[[1]]
+  rank = ranking[,c("rank", "b0", "b1")]
   if (!is.null(salvar))
     capture.output(rank, file = paste0(salvar$diretorio, " rank Test F.txt"))
   print(rank)
@@ -121,5 +138,5 @@ avaliaVolumeAvancado <- function(base, mapeamento= list(dap1="dap1", dap2="dap2"
       }
   }
 
-  return(list(estatisticas = dfestatisticas, base= data, rank = ranking))
+  return(list(estatisticas = dfestatisticas, base= data, ranking = rank))
 }

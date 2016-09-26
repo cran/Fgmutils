@@ -55,11 +55,13 @@ avaliaEstimativas <- function(observado, estimado, estatisticas, ajuste = NULL, 
       )))
     }
 
+
   if (!is.null(salvarEm)){
     nome = paste0(salvarEm, nome)
     if (!dir.exists(salvarEm)) dir.create(salvarEm, showWarnings = TRUE, recursive = TRUE, mode = "0777")
     if (!is.null(ajuste)) capture.output(summary(ajuste), file = paste0(nome, " ajuste summary.txt"))
-    write.csv(x = dfEst, file = paste0(nome, " - estatisticas.csv"), row.names = F)
+    write.csv(x = dfEst$estatisticas, file = paste0(nome, " - estatisticas.csv"), row.names = F)
+    write.csv(x = dfEst$estatisticasDoModelo, file = paste0(nome, " - estatisticas do modelo.csv"), row.names = F)
     write.csv(x = coefs, file = paste0(nome, " - coeficientes.csv"))
   }
 
@@ -89,4 +91,4 @@ avaliaEstimativas <- function(observado, estimado, estatisticas, ajuste = NULL, 
   retorno$estimado = estimado
   retorno$estatisticas = dfEst
   return(retorno)
-  }
+}

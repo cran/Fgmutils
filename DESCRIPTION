@@ -1,7 +1,7 @@
 Package: Fgmutils
 Type: Package
 Title: Forest Growth Model Utilities
-Version: 0.9
+Version: 0.9.3
 Date: 2016-07-31
 Author: Clayton Vieira Fraga Filho,
   Ana Paula Simiqueli,
@@ -21,6 +21,6 @@ LazyData: TRUE
 Suggests: testthat
 RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2016-09-09 17:25:11 UTC; mfernandes
+Packaged: 2016-09-26 18:31:43 UTC; mfernandes
 Repository: CRAN
-Date/Publication: 2016-09-09 19:57:39
+Date/Publication: 2016-09-26 21:27:21

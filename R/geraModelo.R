@@ -1,3 +1,19 @@
+## Copyright (C) 2016  Clayton Vieira Fraga Filho
+##
+## This program is free software; you can redistribute it and/or
+## modify it under the terms of the GNU General Public License
+## as published by the Free Software Foundation; either version 2
+## of the License, or (at your option) any later version.
+##  
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 ##' @title Generates function to work with a model
 ##' @description this function generates unique model given: A formula and a guess (optional: name, funcaoRegressao, maisParametros, requires - proidido: custom)] or[A string saying how the return will be obtained eg custom = "lm (dap2 dap1 ~ * b 0)" (if the formula can not be passed just go empty, ex .: formula = "")]
 ##' @param nome is the name of model

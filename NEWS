@@ -1,3 +1,19 @@
+Fgmutils 0.93
+     o  esta versão atende as seguindes necessidades e atualizações:
+     o  deixar os graficos quadrados com ylim = c(100, -100) em res%
+     o  separar as estatisticas rmse, rmse%, bias, baias%,  cv, r2, mai, rrmse , ce em outro df
+     o  retornar o dataframe com os campos de estatistica adicionados
+     o  dividir os modelos em pastas ao salvar em disco
+     o  exibir resultado do testeF arendodado no grafico
+     o  inserir legenda linha de tendencia nos graficos
+     o  trocar B por betta em greek simbols
+     o  permitir salvar em png/postscript
+     o  trocar po por ranking no teste f retornado da função que avalia
+     o  Miqueias Fernandes
+Fgmutils 0.92
+     o  bug fix in function predizer()
+Fgmutils 0.91
+     o  added function to classify age roundAge()
 Fgmutils 0.9
      o  a new concept of mathematical evaluation model was introduced to this, two new functions have been implemented:
      avaliaEstimativas e avaliaVolumeAvancado
