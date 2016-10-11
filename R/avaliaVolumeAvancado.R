@@ -50,7 +50,6 @@ avaliaVolumeAvancado <- function(base, mapeamento= list(dap1="dap1", dap2="dap2"
 
   ##separar a base em treino e validacao
   dftv = separaDados(baseW, dividirEm, percTraining = percentualDeTreino)
-  print("\n")
   baseTreino = dftv$treino
   baseValidacao = dftv$validacao
 

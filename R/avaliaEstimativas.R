@@ -9,84 +9,74 @@
 ##' @param nome name of files will be save
 ##' @return will be returned
 ##' @export
-avaliaEstimativas <- function(observado, estimado, estatisticas, ajuste = NULL, graficos = NULL, salvarEm = NULL, nome="observadoXestimado"){
-
-  require(Fgmutils)
+avaliaEstimativas <- function(observado, estimado, estatisticas, ajuste = NULL, graficos = NULL,
+                              salvarEm = NULL, nome = "observadoXestimado"){
   retorno = list()
-
-  if("funcoes" %in% labels(estatisticas)){
-    addParametros = c("observado", "estimado", "dfEstatisticas", "coeficientes")
-    if (!is.null(ajuste)) addParametros = c(addParametros, "ajuste")
-    if(!is.null(contemParametros(estatisticas$funcoes, estatisticas, addParametros)))
-      stop(paste0("ERROR: quantidade de parameteros insuficiente para estatisticas, falta: ", toString(contemParametros(estatisticas$funcoes, estatisticas, addParametros))))
+  if ("funcoes" %in% labels(estatisticas)) {
+    addParametros = c("observado", "estimado", "dfEstatisticas",
+                      "coeficientes")
+    if (!is.null(ajuste))
+      addParametros = c(addParametros, "ajuste")
+    if (!is.null(contemParametros(estatisticas$funcoes, estatisticas,
+                                  addParametros)))
+      stop(paste0("ERROR: quantidade de parameteros insuficiente para estatisticas, falta: ",
+                  toString(contemParametros(estatisticas$funcoes,
+                                            estatisticas, addParametros))))
   }
-  else
-    stop("informe as funcoes de estatisticas. avaliaEstimativas(estatisticas = list(funcoes = c(..")
-
-
-  if (!is.null(ajuste))
-  {
-    estimado =  fitted(ajuste)
+  else stop("informe as funcoes de estatisticas. avaliaEstimativas(estatisticas = list(funcoes = c(..")
+  if (!is.null(ajuste)) {
+    if (is.null(estimado) || is.nan(estimado))
+      estimado = fitted(ajuste)
     retorno$ajuste = ajuste
     retorno$coeficientes.ajuste = coef(summary(ajuste))
   }
-
   testF = lm(estimado ~ observado)
   coefs = coef(summary(testF))
   retorno$coeficientes.testF = coefs
   if (!is.null(ajuste))
     coefs = rbind(coef(summary(ajuste)), coefs)
-
   dfEst = NULL
-  #if(length(labels(estatisticas)) == 1)
-  #warning("nenhum argumento foi informado para funcoes em 'estatisticas'")
   args = ""
-  for(i in 1:length(labels(estatisticas)))
-    args = paste0(args, ", ", labels(estatisticas)[[i]], " = estatisticas$", labels(estatisticas)[[i]])
-  if(1 <= length(estatisticas$funcoes))
-    for(i in 1:length(estatisticas$funcoes)){
-      eval(parse(text = paste0(
-        "dfEst = estatisticas$funcoes[[i]](
-        observado = observado,
-        estimado = estimado,
-        dfEstatisticas = dfEst,
-        ajuste = ajuste,
-        coeficientes = coefs", args,")"
-      )))
+  for (i in 1:length(labels(estatisticas))) args = paste0(args,
+                                                          ", ", labels(estatisticas)[[i]], " = estatisticas$",
+                                                          labels(estatisticas)[[i]])
+  if (1 <= length(estatisticas$funcoes))
+    for (i in 1:length(estatisticas$funcoes)) {
+      eval(parse(text = paste0("dfEst = estatisticas$funcoes[[i]](\n        observado = observado,\n        estimado = estimado,\n        dfEstatisticas = dfEst,\n        ajuste = ajuste,\n        coeficientes = coefs",
+                               args, ")")))
     }
-
-
-  if (!is.null(salvarEm)){
+  if (!is.null(salvarEm)) {
     nome = paste0(salvarEm, nome)
-    if (!dir.exists(salvarEm)) dir.create(salvarEm, showWarnings = TRUE, recursive = TRUE, mode = "0777")
-    if (!is.null(ajuste)) capture.output(summary(ajuste), file = paste0(nome, " ajuste summary.txt"))
-    write.csv(x = dfEst$estatisticas, file = paste0(nome, " - estatisticas.csv"), row.names = F)
-    write.csv(x = dfEst$estatisticasDoModelo, file = paste0(nome, " - estatisticas do modelo.csv"), row.names = F)
+    if (!dir.exists(salvarEm))
+      dir.create(salvarEm, showWarnings = TRUE, recursive = TRUE,
+                 mode = "0777")
+    if (!is.null(ajuste))
+      capture.output(summary(ajuste), file = paste0(nome,
+                                                    " ajuste summary.txt"))
+    write.csv(x = dfEst$estatisticas, file = paste0(nome,
+                                                    " - estatisticas.csv"), row.names = F)
+    write.csv(x = dfEst$estatisticasDoModelo, file = paste0(nome,
+                                                            " - estatisticas do modelo.csv"), row.names = F)
     write.csv(x = coefs, file = paste0(nome, " - coeficientes.csv"))
   }
-
-  if (!is.null(graficos)){
-    if(!is.null(contemParametros(graficos$funcoes, graficos, c(addParametros, "estatisticas"))))
-      stop(paste0("ERROR: quantidade de parameteros insuficiente para graficos, falta: ", toString(contemParametros(graficos$funcoes, graficos, c(addParametros, "estatisticas")))))
+  if (!is.null(graficos)) {
+    if (!is.null(contemParametros(graficos$funcoes, graficos,
+                                  c(addParametros, "estatisticas"))))
+      stop(paste0("ERROR: quantidade de parameteros insuficiente para graficos, falta: ",
+                  toString(contemParametros(graficos$funcoes, graficos,
+                                            c(addParametros, "estatisticas")))))
     args = ""
-    for(i in 1:length(labels(graficos)))
-      args = paste0(args, ", ", labels(graficos)[[i]], " = graficos$", labels(graficos)[[i]])
-    for(i in 1:length(graficos$funcoes)) {
-      eval(parse(text = paste0(
-        "graficos$funcoes[[i]](
-        observado = observado,
-        estimado = estimado,
-        ajuste = ajuste,
-        coeficientes = coefs,
-        estatisticas = dfEst",
-        args, ")"
-      )))
+    for (i in 1:length(labels(graficos))) args = paste0(args,
+                                                        ", ", labels(graficos)[[i]], " = graficos$", labels(graficos)[[i]])
+    for (i in 1:length(graficos$funcoes)) {
+      eval(parse(text = paste0("graficos$funcoes[[i]](\n        observado = observado,\n        estimado = estimado,\n        ajuste = ajuste,\n        coeficientes = coefs,\n        estatisticas = dfEst",
+                               args, ")")))
     }
   }
-
   B0 = abs(testF$coefficients[1])
   B1 = abs(testF$coefficients[2] - 1)
-  retorno$ranking = data.frame(b0 = testF$coefficients[1], b1 = testF$coefficients[2], rankingB0 = B0, rankingB1 = B1)
+  retorno$ranking = data.frame(b0 = testF$coefficients[1],
+                               b1 = testF$coefficients[2], rankingB0 = B0, rankingB1 = B1)
   retorno$observado = observado
   retorno$estimado = estimado
   retorno$estatisticas = dfEst

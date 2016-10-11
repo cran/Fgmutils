@@ -4,12 +4,12 @@
 ## modify it under the terms of the GNU General Public License
 ## as published by the Free Software Foundation; either version 2
 ## of the License, or (at your option) any later version.
-##  
+##
 ## This program is distributed in the hope that it will be useful,
 ## but WITHOUT ANY WARRANTY; without even the implied warranty of
 ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## GNU General Public License for more details.
-## 
+##
 ## You should have received a copy of the GNU General Public License
 ## along with this program; if not, write to the Free Software
 ## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -19,9 +19,10 @@
 ##' @param plots is list of plots
 ##' @param ages is list of age
 ##' @param inYears ages are in year?
+##' @param firstAge synchronize begin of ages with an age? what age?
 ##' @return will be returned a list of round ages
 ##' @export
-roundAge  <- function(plots, ages, inYears = F){
+roundAge  <- function(plots, ages, inYears = F, firstAge = NaN){
 
   base = data.frame(parcela = plots, idade = ages, idade2 = -999)
 
@@ -42,7 +43,10 @@ roundAge  <- function(plots, ages, inYears = F){
         if( abs(idades[[i]] - idades[[i -1]]) > incr + (incr / 2))
           warning(paste0("pronounced difference between age ", idades[[i - 1]], " and ", idades[[i]], " in  ", parcela))
 
-    at = seq(round(min(idades)), (round(max(idades)) + incr), incr)
+    idademin = round( min(idades) )
+    if(!is.nan(firstAge))
+      idademin = firstAge
+    at = seq( idademin, (round(max(idades)) + incr), incr)
 
     for (j in 1:length(idades))
       base[base$parcela == parcela & base$idade == idades[[j]], "idade2"] = at[[j]]

@@ -4,7 +4,7 @@
 \alias{roundAge}
 \title{Round Ages}
 \usage{
-roundAge(plots, ages, inYears = F)
+roundAge(plots, ages, inYears = F, firstAge = NaN)
 }
 \arguments{
 \item{plots}{is list of plots}
@@ -12,6 +12,8 @@ roundAge(plots, ages, inYears = F)
 \item{ages}{is list of age}
 
 \item{inYears}{ages are in year?}
+
+\item{firstAge}{synchronize begin of ages with an age? what age?}
 }
 \value{
 will be returned a list of round ages

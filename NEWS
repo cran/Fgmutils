@@ -1,3 +1,6 @@
+Fgmutils 0.94
+     o  added functions: projectBaseOriented, evalAgeBased, avaliaVolumeAgeBased
+     o  update functions: roundAge, avaliaEstimativas
 Fgmutils 0.93
      o  esta versão atende as seguindes necessidades e atualizações:
      o  deixar os graficos quadrados com ylim = c(100, -100) em res%
