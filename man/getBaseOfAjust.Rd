@@ -15,4 +15,3 @@ will be returned a string which is the database of ajust
 \description{
 this function returns the database used in the setting
 }
-

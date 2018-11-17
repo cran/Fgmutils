@@ -20,4 +20,3 @@ rmse = sqrt(mean((observados - estimados)^2))
 \references{
 See \url{https://en.wikipedia.org/wiki/Root-mean-square_deviation} for more details.
 }
-

@@ -22,4 +22,3 @@ mse = (sum(estimados-observados)^2)/(length(observados)-k)
 \references{
 See \url{https://en.wikipedia.org/wiki/Mean_squared_error} for more details.
 }
-

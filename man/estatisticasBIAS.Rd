@@ -21,4 +21,3 @@ will be returned data.frame with bias
 \description{
 this function returns a data.frame containing fields bias
 }
-

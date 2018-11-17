@@ -23,4 +23,3 @@ the center of the class that the DAP belongs.
 dados = defineClasses(1, 10, 2, getDataFrame = TRUE)
 classificaClasseDAP(dados,7)
 }
-

@@ -19,4 +19,3 @@ checks if a variable is integer
 x = 5
 check.integer(x)
 }
-

@@ -4,8 +4,9 @@
 \alias{estatisticasR2}
 \title{R2 Estatistics for linear models}
 \usage{
-estatisticasR2(observado, estimado, dfEstatisticas = NULL, ajuste = NULL,
-  intercepto = TRUE, formulaDoAjuste = NULL, baseDoAjuste = NULL, ...)
+estatisticasR2(observado, estimado, dfEstatisticas = NULL,
+  ajuste = NULL, intercepto = TRUE, formulaDoAjuste = NULL,
+  baseDoAjuste = NULL, ...)
 }
 \arguments{
 \item{observado}{list containing the observations of variable}
@@ -30,4 +31,3 @@ will be returned data.frame with r2
 \description{
 this function returns a data.frame containing fields r2
 }
-

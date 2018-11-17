@@ -4,13 +4,14 @@
 \alias{avaliaVolumeAgeBased}
 \title{avalia Volume Age Based}
 \usage{
-avaliaVolumeAgeBased(base, firstAge, lastAge, models, mapper = list(age1 =
-  "idade1", age2 = "idade2", dap1 = "dap1", dap2 = "dap2", dap2est = "dap2est",
-  ht1 = "ht1", ht2 = "ht2", ht2est = "ht2est", volume1 = "volume1", volume2 =
-  "volume2", volume2est = "volume2est"), groupBy = "parcela", save = NULL,
-  percTraining = 0.7, paramEstatisticsDAP, paramEstatisticsHT,
-  paramEstatisticsVolume, plot = "parcela", ageER = "^.*_",
-  ageRound = NaN, ageInYears = F, forcePredict = F)
+avaliaVolumeAgeBased(base, firstAge, lastAge, models, mapper = list(age1
+  = "idade1", age2 = "idade2", dap1 = "dap1", dap2 = "dap2", dap2est =
+  "dap2est", ht1 = "ht1", ht2 = "ht2", ht2est = "ht2est", volume1 =
+  "volume1", volume2 = "volume2", volume2est = "volume2est"),
+  groupBy = "parcela", save = NULL, percTraining = 0.7,
+  paramEstatisticsDAP, paramEstatisticsHT, paramEstatisticsVolume,
+  plot = "parcela", ageER = "^.*_", ageRound = NaN, ageInYears = F,
+  forcePredict = F)
 }
 \arguments{
 \item{base}{the data base}
@@ -51,4 +52,3 @@ will be returned a list of round ages
 \description{
 this function evaluate volume based on ages
 }
-

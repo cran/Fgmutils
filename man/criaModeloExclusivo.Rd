@@ -19,4 +19,3 @@ will be returned a function with exclusive model
 \description{
 this function returns a unique model is variable receive each mapeda variable ex .: criaModeloExclusivo (modeloCamposLeite, c ("age1", "age2", "bai1", "s"))
 }
-

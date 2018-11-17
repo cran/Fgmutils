@@ -19,4 +19,3 @@ will be returned a list of volume calc
 \description{
 this function calculates the volume based on the height and volume of literature of the equation
 }
-

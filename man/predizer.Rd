@@ -21,4 +21,3 @@ will be returned list of values predicts
 \description{
 this function is the replacement predict, she tries to predict if the return zero predict it calculates the prediction with the coefficients reported in the parameter setting
 }
-

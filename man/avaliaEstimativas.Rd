@@ -28,4 +28,3 @@ will be returned
 \description{
 given a list of observations and an estimated list of these observations this function evaluates how close it is the estimated value of observed and saves the differences
 }
-

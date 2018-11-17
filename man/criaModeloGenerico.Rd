@@ -4,8 +4,8 @@
 \alias{criaModeloGenerico}
 \title{Create function with generic model}
 \usage{
-criaModeloGenerico(nome, formula, funcaoRegressao, variaveis, palpite = NULL,
-  maisParametros = NULL, requires = NULL)
+criaModeloGenerico(nome, formula, funcaoRegressao, variaveis,
+  palpite = NULL, maisParametros = NULL, requires = NULL)
 }
 \arguments{
 \item{nome}{is the name of model}
@@ -28,4 +28,3 @@ will be returned function with generic model to map to a base
 \description{
 This function creates a generic model that will be a funcao that has parameters for the variables that can be mapped to each different base. her return will be a generic model that should be mapped to be used by the function avaliaEstimativas
 }
-

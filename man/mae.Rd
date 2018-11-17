@@ -23,4 +23,3 @@ mae = mean(abs(observados-estimados))
 \references{
 see \url{https://en.wikipedia.org/wiki/Mean_absolute_error} for more details.
 }
-

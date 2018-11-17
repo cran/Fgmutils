@@ -5,7 +5,7 @@
 \title{Create Date Paired}
 \usage{
 criaDadosPareados(dataFrame, campoChave, campoComparacao, camposPareados,
-  camposNaoPareados)
+  camposNaoPareados, progress = TRUE)
 }
 \arguments{
 \item{dataFrame}{dataframe that you want to pair dataFrame must contain columns cod_id, ANO_MEDICAO1, ANO_MEDICAO2, DAP1, DAP2, HT1, HT2, ID_PROJETO}
@@ -17,6 +17,8 @@ criaDadosPareados(dataFrame, campoChave, campoComparacao, camposPareados,
 \item{camposPareados}{vector the fields that will be paired exemple CampoesPareados=c(dap,ht)}
 
 \item{camposNaoPareados}{the fields he wants to be present without the paired}
+
+\item{progress}{if TRUE show a progress bar}
 }
 \value{
 will be returned a dataframe containing columns
@@ -25,4 +27,3 @@ cod_id, ANO_MEDICAO1, ANO_MEDICAO2, DAP1, DAP2, HT1, HT2, ID_PROJETO
 \description{
 paired a dataframe
 }
-

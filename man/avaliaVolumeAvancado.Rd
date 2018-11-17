@@ -4,11 +4,11 @@
 \alias{avaliaVolumeAvancado}
 \title{evaluates Volume Advanced}
 \usage{
-avaliaVolumeAvancado(base, mapeamento = list(dap1 = "dap1", dap2 = "dap2", ht1
-  = "ht1", ht2 = "ht2"), modelos = NULL, salvar = NULL, graficos = NULL,
-  estatisticas = NULL, forcePredict = F, dividirEm = "parcela",
-  percentualDeTreino = 0.7, agruparPor = "parcela",
-  fnCalculaVolume = calculaVolumeDefault)
+avaliaVolumeAvancado(base, mapeamento = list(dap1 = "dap1", dap2 =
+  "dap2", ht1 = "ht1", ht2 = "ht2"), modelos = NULL, salvar = NULL,
+  graficos = NULL, estatisticas = NULL, forcePredict = F,
+  dividirEm = "parcela", percentualDeTreino = 0.7,
+  agruparPor = "parcela", fnCalculaVolume = calculaVolumeDefault)
 }
 \arguments{
 \item{base}{data.frame with data}
@@ -39,4 +39,3 @@ will be returned a result of statistics and ranking of volume
 \description{
 this function performs an assessment of estimates of a variable as the forcefulness with expected
 }
-

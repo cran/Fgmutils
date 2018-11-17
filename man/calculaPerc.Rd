@@ -17,4 +17,3 @@ With this function, you can calculate the ratio of one quantity or magnitude rel
 \details{
 calculaPerc = ((valor)/mean(observados))*100
 }
-

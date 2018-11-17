@@ -21,4 +21,3 @@ will be returned data.frame with corr_PERCENTUAL field
 \description{
 this function returns a data.frame containing fields corr_PERCENTUAL
 }
-

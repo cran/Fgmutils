@@ -18,4 +18,3 @@ creates a list with the class interval of a frequency distribution
 dados <- c(1,2,3,4)
 defineClasses2(dados,2)
 }
-

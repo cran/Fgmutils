@@ -19,4 +19,3 @@ will be returned list of columns used in ajust
 \description{
 this function returns an array with the column names that are on the model and reported basis or basis used in ajust
 }
-

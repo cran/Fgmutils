@@ -19,4 +19,3 @@ dataf dataframe combined with the vector
 \description{
 take a data-frame and a vector and combine by columns, respectively.
 }
-

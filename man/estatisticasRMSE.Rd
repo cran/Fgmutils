@@ -21,4 +21,3 @@ will be returned data.frame with RMSE calc
 \description{
 this function returns a data.frame containing fields rmse
 }
-

@@ -17,4 +17,3 @@ The linear intercept model,
 \details{
 a = (n-1)/(n-k-1)
 }
-

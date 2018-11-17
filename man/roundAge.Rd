@@ -21,4 +21,3 @@ will be returned a list of round ages
 \description{
 this function approaching the age to the nearest age as an integer
 }
-

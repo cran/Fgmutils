@@ -14,4 +14,3 @@ salvaModelo(modelo, diretorio = "")
 \description{
 save function with Model of type criaModeloGenerico or criaModeloExclusivo
 }
-

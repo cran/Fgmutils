@@ -14,4 +14,3 @@ syxPerc(syx, observados)
 \description{
 Measures the variability, or scatter of the observed values around the regression line
 }
-

@@ -19,4 +19,3 @@ this feature is designed to fix variables that its content was a command
 a = 5
 retornaValor(a)
 }
-

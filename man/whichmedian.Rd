@@ -19,4 +19,3 @@ vector position that has its closest median value
 dados <- c(1,2,3,4,9,5,6)
 whichmedian(dados)
 }
-

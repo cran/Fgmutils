@@ -24,4 +24,3 @@ baseAtualizar with the updated fields according to baseAgrupada
 \description{
 this function update certain fields in a dataframe, based on the provided key
 }
-

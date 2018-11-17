@@ -6,9 +6,10 @@
 \usage{
 evalAgeBased(listOfdata, mapper = list(volume2 = "volume2", volume2est =
   "volume2est", dap2 = "dap2", dap2est = "dap2est", ht2 = "ht2", ht2est =
-  "ht2est"), fnAvaliaEstimativas = avaliaEstimativas, paramEstatisticsDAP,
-  paramEstatisticsHT, paramEstatisticsVolume,
-  titulos = "paste(\\"Idade\\", idade)", ageER = "^.*_", nameModel = NULL)
+  "ht2est"), fnAvaliaEstimativas = avaliaEstimativas,
+  paramEstatisticsDAP, paramEstatisticsHT, paramEstatisticsVolume,
+  titulos = "paste(\\"Idade\\", idade)", ageER = "^.*_",
+  nameModel = NULL)
 }
 \arguments{
 \item{listOfdata}{the list that contains the data frames predicts}
@@ -35,4 +36,3 @@ will be returned a list of round ages
 \description{
 This function evaluates the volume of past data frames based on the parameter 'listOfdata'
 }
-

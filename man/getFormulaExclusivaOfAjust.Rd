@@ -15,4 +15,3 @@ will be returned a string which is the formula of ajust
 \description{
 this function returns the formula of the model used in ajust
 }
-

@@ -4,9 +4,9 @@
 \alias{avaliaAjuste}
 \title{avalia Ajuste}
 \usage{
-avaliaAjuste(dataFrame, variavelObservados, variavelEstimados, linear = TRUE,
-  nParametros = NA, intercepto = TRUE, plot = NA, modelo = NA,
-  resumo = FALSE, emf = TRUE)
+avaliaAjuste(dataFrame, variavelObservados, variavelEstimados,
+  linear = TRUE, nParametros = NA, intercepto = TRUE, plot = NA,
+  modelo = NA, resumo = FALSE, emf = TRUE)
 }
 \arguments{
 \item{dataFrame}{dataFrane with information observed, estimated}
@@ -32,4 +32,3 @@ avaliaAjuste(dataFrame, variavelObservados, variavelEstimados, linear = TRUE,
 \description{
 this function evaluates the quality of the adjustment of the statistical model, rom observed data and those estimated by the model, observed
 }
-

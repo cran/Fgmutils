@@ -4,9 +4,9 @@
 \alias{geraModelo}
 \title{Generates function to work with a model}
 \usage{
-geraModelo(nome = "modelo sem nome", formula, funcaoRegressao = "nlsLM",
-  palpite = NULL, maisParametros = NULL, requires = NULL,
-  customizado = NULL)
+geraModelo(nome = "modelo sem nome", formula,
+  funcaoRegressao = "nlsLM", palpite = NULL, maisParametros = NULL,
+  requires = NULL, customizado = NULL)
 }
 \arguments{
 \item{nome}{is the name of model}
@@ -29,4 +29,3 @@ will be returned a function with exclusive model
 \description{
 this function generates unique model given: A formula and a guess (optional: name, funcaoRegressao, maisParametros, requires - proidido: custom)] or[A string saying how the return will be obtained eg custom = "lm (dap2 dap1 ~ * b 0)" (if the formula can not be passed just go empty, ex .: formula = "")]
 }
-

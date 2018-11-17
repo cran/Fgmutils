@@ -23,4 +23,3 @@ plot <- c(1,2,3,4)
 test <- data.frame(measurement_date,plot)
 converteCampoParaCharacter("measurement_date",test)
 }
-

@@ -4,7 +4,8 @@
 \alias{estatisticasResiduoPERCENTUAL}
 \title{Residuals Estatistics}
 \usage{
-estatisticasResiduoPERCENTUAL(observado, estimado, dfEstatisticas = NULL, ...)
+estatisticasResiduoPERCENTUAL(observado, estimado, dfEstatisticas = NULL,
+  ...)
 }
 \arguments{
 \item{observado}{list containing the observations of variable}
@@ -21,4 +22,3 @@ will be returned data.frame with percent Residuals field
 \description{
 this function returns a data.frame containing field residuoPERCENTUAL
 }
-

@@ -19,4 +19,3 @@ data.frame with classeDAP field and other
 \description{
 classify field dap as specified amplitude and includes a few fields
 }
-

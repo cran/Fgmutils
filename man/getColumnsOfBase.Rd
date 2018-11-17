@@ -17,4 +17,3 @@ will be returned list with fields whose name are present in the string
 \description{
 this function returns the columns of a base whose names are present in the string strColumns
 }
-

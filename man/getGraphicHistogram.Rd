@@ -23,4 +23,3 @@ getGraphicHistogram(titulo = "residuos", nome = "observadoXestimado",
 \description{
 this function displays/saves a histogram graph illustrating the frequency of waste in classes
 }
-

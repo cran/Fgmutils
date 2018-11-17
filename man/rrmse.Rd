@@ -14,4 +14,3 @@ rrmse(observados, estimados)
 \description{
 relative root mean square error (RRMSE) is calculated by dividing the RMSE by the mean observed data
 }
-

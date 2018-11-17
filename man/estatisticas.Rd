@@ -21,4 +21,3 @@ will be returned a list with data.frame with observado and estimado fields and o
 \description{
 this function returns a data.frame containing fields observado and estimado
 }
-

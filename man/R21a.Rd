@@ -19,4 +19,3 @@ To avoid any problems and confudion on the part of the data analyst, it seems a 
 \details{
 R21a <- 1-a*(1 - R21)
 }
-

@@ -19,4 +19,3 @@ will be returned list of columns used in ajust or in formula
 \description{
 this function retona columns the base of the parameter or setting present in the model
 }
-

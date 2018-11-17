@@ -25,4 +25,3 @@ column_name_plot <- c(1,2,3,4)
 test <- data.frame(column_name_measurement_date,column_name_plot)
 getAnoMedicao(test,"column_name_measurement_date","column_name_plot")
 }
-

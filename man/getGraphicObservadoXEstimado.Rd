@@ -6,8 +6,8 @@
 \usage{
 getGraphicObservadoXEstimado(titulo = "observadoXestimado",
   nome = "observadoXestimado", observado, estimado, showTestF = TRUE,
-  save = NULL, labsX = "observado", labsy = "estimado", vetorial = T,
-  ...)
+  save = NULL, labsX = "observado", labsy = "estimado",
+  vetorial = T, ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -33,4 +33,3 @@ getGraphicObservadoXEstimado(titulo = "observadoXestimado",
 \description{
 this function display/save a graphic scatter.smooth illustrating the difference between the observed and estimated
 }
-

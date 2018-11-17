@@ -21,4 +21,3 @@ will be returned data.frame with Residuals field
 \description{
 this function returns a data.frame containing field residuo
 }
-

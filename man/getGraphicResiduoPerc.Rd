@@ -5,9 +5,9 @@
 \title{Get Graphic Residuals percent}
 \usage{
 getGraphicResiduoPerc(titulo = "Residuo Percentual (\%)",
-  nome = "observadoXestimado", strVariavelXResiduo = NULL, estatisticas,
-  save = NULL, labsX = "observacao", labsy = "residuos", vetorial = T,
-  ...)
+  nome = "observadoXestimado", strVariavelXResiduo = NULL,
+  estatisticas, save = NULL, labsX = "observacao",
+  labsy = "residuos", vetorial = T, ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -31,4 +31,3 @@ getGraphicResiduoPerc(titulo = "Residuo Percentual (\%)",
 \description{
 this function displays/saves a graph illustrating the distribution scatter.smooth of residues
 }
-

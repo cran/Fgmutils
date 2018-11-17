@@ -18,4 +18,3 @@ separaDados(dataFrame, fieldName, percTraining = 0.7, seed = NULL)
 \description{
 divides the dataFrame as the percentage defined in percTraining enabling apply and measure the performance of the regression equation.
 }
-

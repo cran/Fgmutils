@@ -5,9 +5,9 @@
 \title{Get Graphic Residuals absolute}
 \usage{
 getGraphicResiduoAbs(titulo = "residuo absoluto",
-  nome = "observadoXestimado", strVariavelXResiduo = NULL, estatisticas,
-  save = NULL, labsX = "observacao", labsy = "residuos", vetorial = T,
-  ...)
+  nome = "observadoXestimado", strVariavelXResiduo = NULL,
+  estatisticas, save = NULL, labsX = "observacao",
+  labsy = "residuos", vetorial = T, ...)
 }
 \arguments{
 \item{titulo}{is the title graphic}
@@ -31,4 +31,3 @@ getGraphicResiduoAbs(titulo = "residuo absoluto",
 \description{
 this function displays/saves a graph illustrating the distribution scatter.smooth of residues
 }
-

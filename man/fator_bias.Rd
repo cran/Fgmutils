@@ -18,6 +18,5 @@ The bias factor indicates the average of the observed values is above or below t
 }
 \details{
 fator_bias = 10^(sum(log(estimados/observados)/n))
-#' @references see \url{http://smas.chemeng.ntua.gr/miram/files/publ_268_11_2_2005.pdf} for more details.
+#' @references see \url{https://www.sciencedirect.com/science/article/pii/S0165176599001949} for more details.
 }
-

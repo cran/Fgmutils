@@ -23,4 +23,3 @@ defineClasses(limiteMin, limiteMax, amplitude, decrescente = TRUE,
 \description{
 creates a list with the class interval of a frequency distribution
 }
-

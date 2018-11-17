@@ -20,4 +20,3 @@ bias = (sum(estimados-observados))/length(observados)
 \references{
 see \url{https://en.wikipedia.org/wiki/Bias_of_an_estimator} for more details.
 }
-

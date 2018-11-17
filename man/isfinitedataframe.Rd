@@ -22,4 +22,3 @@ test <- data.frame(x,date)
 isfinitedataframe(test)
 isfinitedataframe(x)
 }
-

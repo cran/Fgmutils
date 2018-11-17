@@ -6,7 +6,8 @@
 \usage{
 projectBaseOriented(firstAge = NaN, lastAge = NaN, fitDAP, fitHT, base,
   mapper = list(age1 = "idadearred1", dap1 = "dap1", dap2 = "dap2", ht1 =
-  "ht1", ht2 = "ht2"), calcVolume = calculaVolumeDefault, forcePredict = F)
+  "ht1", ht2 = "ht2"), calcVolume = calculaVolumeDefault,
+  forcePredict = F)
 }
 \arguments{
 \item{firstAge}{the first age to predict}
@@ -31,4 +32,3 @@ will be returned a list of volume predict to ages in dataframe and/or param
 \description{
 this function build a list of dataframe with projects of ages between 'firstAge' and 'lastAge' params
 }
-

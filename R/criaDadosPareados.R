@@ -21,13 +21,14 @@
 ##' @param campoComparacao character the field used to compare the period of change
 ##' @param camposPareados vector the fields that will be paired exemple CampoesPareados=c(dap,ht)
 ##' @param camposNaoPareados the fields he wants to be present without the paired
+##' @param progress if TRUE show a progress bar
 ##' @return will be returned a dataframe containing columns
 ##' cod_id, ANO_MEDICAO1, ANO_MEDICAO2, DAP1, DAP2, HT1, HT2, ID_PROJETO
 ##' @import data.table
 ##' @import sqldf
 ##' @importFrom "utils" "setTxtProgressBar" "txtProgressBar"
 ##' @export
-criaDadosPareados <- function (dataFrame, campoChave, campoComparacao, camposPareados, camposNaoPareados)
+criaDadosPareados <- function (dataFrame, campoChave, campoComparacao, camposPareados, camposNaoPareados, progress = TRUE)
 {
   ini = Sys.time()
 
@@ -105,10 +106,13 @@ criaDadosPareados <- function (dataFrame, campoChave, campoComparacao, camposPar
   eval(parse(text=paste0(dfrString)))
   dfr = data.table(dfr)
   n = nrow(dataFrame)
-  pb = txtProgressBar(min=1, max=n, style=3)
-
+  if (progress) { 
+    pb = txtProgressBar(min=1, max=n, style=3)
+  }
   for (i in 2:n) {
-    setTxtProgressBar(pb, i)
+    if (progress) { 
+      setTxtProgressBar(pb, i)
+    }
     #catching the field campoComparacao
 
     #campoComparacao
@@ -196,7 +200,11 @@ criaDadosPareados <- function (dataFrame, campoChave, campoComparacao, camposPar
   tempo = fim-ini
   cat("\n\n")
   print(tempo)
-  remove(ini, fim, cont, linha, pb, tempo)
+  remove(ini, fim, cont, linha, tempo)
 
+  if (progress) { 
+    remove(pb)
+  }
+  
   return (dfr)
 }

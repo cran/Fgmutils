@@ -4,8 +4,9 @@
 \alias{estatisticasCV}
 \title{Co variance Estatistics}
 \usage{
-estatisticasCV(observado, estimado, ajuste = NULL, dfEstatisticas = NULL,
-  baseDoAjuste = NULL, formulaDoAjuste = NULL, ...)
+estatisticasCV(observado, estimado, ajuste = NULL,
+  dfEstatisticas = NULL, baseDoAjuste = NULL, formulaDoAjuste = NULL,
+  ...)
 }
 \arguments{
 \item{observado}{list containing the observations of variable}
@@ -28,4 +29,3 @@ will be returned data.frame with cv
 \description{
 this function returns a data.frame containing fields cv
 }
-

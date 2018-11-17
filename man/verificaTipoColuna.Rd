@@ -18,4 +18,3 @@ CD_PLANTIO <- c("ACD","CDB","CDC","CDD")
 test <- data.frame(ID_REGIAO,CD_PLANTIO)
 verificaTipoColuna(test$ID_REGIAO)
 }
-

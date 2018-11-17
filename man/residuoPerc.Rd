@@ -17,4 +17,3 @@ this function calculates the vector residue percentage.
 \details{
 calculaPerc = ((valor)/mean(observados))*100
 }
-
